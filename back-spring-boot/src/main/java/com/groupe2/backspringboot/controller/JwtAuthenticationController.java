@@ -14,12 +14,12 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.groupe2.backspringboot.model.JwtRequest;
 import com.groupe2.backspringboot.model.JwtResponse;
-import com.groupe2.backspringboot.model.RegisterLogin;
 import com.groupe2.backspringboot.model.UserDao;
 import com.groupe2.backspringboot.model.UserDto;
 import com.groupe2.backspringboot.repository.UserRepository;
 import com.groupe2.backspringboot.security.jwt.JwtTokenUtil;
 import com.groupe2.backspringboot.security.services.JwtUserDetailsService;
+import com.groupe2.backspringboot.services.UserService;
 
 @RestController
 @CrossOrigin
@@ -38,7 +38,7 @@ public class JwtAuthenticationController {
 	private UserRepository userRepository;
 	
 	@Autowired 
-	private RegisterLogin registerLogin;
+	private UserService registerLogin;
 
 	@PostMapping(value = "/authenticate")
 	public ResponseEntity<?> createAuthenticationToken(@RequestBody JwtRequest authenticationRequest) throws Exception {

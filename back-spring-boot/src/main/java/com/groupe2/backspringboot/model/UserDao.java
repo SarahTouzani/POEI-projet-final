@@ -6,7 +6,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
+import javax.persistence.Version;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -20,11 +20,12 @@ import lombok.Setter;
 public class UserDao {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long id;
+	private int id;
 	@Column(unique = true)
 	private String username;
-	@Column
 	@JsonIgnore
 	private String password;
+	@Version
+	private int version;
 
 }

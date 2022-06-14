@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.groupe2.backspringboot.model.Prestations;
-import com.groupe2.backspringboot.repo.PrestationRepository;
+import com.groupe2.backspringboot.repository.PrestationRepository;
 
 @RestController
 @RequestMapping("/prestations")

@@ -42,6 +42,7 @@ public class EntreprisesController {
 		
 	}
 	
+	
 	@CrossOrigin
 	@DeleteMapping("{id}")
 	public void delete(@PathVariable(name = "id") int id) {

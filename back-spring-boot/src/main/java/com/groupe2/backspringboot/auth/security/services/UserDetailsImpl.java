@@ -20,6 +20,7 @@ import lombok.Getter;
 public class UserDetailsImpl implements UserDetails {
 
 	private static final long serialVersionUID = -1978331461039949553L;
+	
 	private int id;
 	private String username;
 	private String email;
@@ -31,6 +32,7 @@ public class UserDetailsImpl implements UserDetails {
 		List<GrantedAuthority> authorities = user.getRoles().stream()
 				.map(role -> new SimpleGrantedAuthority(role.getName().name()))
 				.collect(Collectors.toList());
+		
 		return new UserDetailsImpl(user.getId(), user.getUsername(), user.getEmail(), user.getPassword(),
 				authorities);
 	}

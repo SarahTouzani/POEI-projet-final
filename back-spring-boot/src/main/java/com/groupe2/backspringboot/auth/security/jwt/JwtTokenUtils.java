@@ -7,7 +7,6 @@ import java.util.Date;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Component;
 
 import com.groupe2.backspringboot.auth.security.services.UserDetailsImpl;
@@ -31,9 +30,12 @@ public class JwtTokenUtils implements Serializable {
 
 	Key secret = Keys.secretKeyFor(SignatureAlgorithm.HS256);
 
-	public String generateToken(Authentication authentication) {
-		UserDetailsImpl userPrincipal = (UserDetailsImpl) authentication.getPrincipal();
-		return Jwts.builder().setSubject(userPrincipal.getUsername()).setIssuedAt(new Date())
+	public String generateToken(UserDetailsImpl userPrincipal) {
+		return generateTokenFromUsername(userPrincipal.getUsername());
+	}
+	
+	public String generateTokenFromUsername(String username) {
+		return Jwts.builder().setSubject(username).setIssuedAt(new Date())
 				.setExpiration(new Date(new Date().getTime() + jwtExpirationMs)).signWith(secret).compact();
 	}
 

@@ -1,4 +1,4 @@
-package com.groupe2.backspringboot.security;
+package com.groupe2.backspringboot.auth.security;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -16,8 +16,8 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
-import com.groupe2.backspringboot.security.jwt.JwtAuthenticationEntryPoint;
-import com.groupe2.backspringboot.security.jwt.JwtRequestFilter;
+import com.groupe2.backspringboot.auth.security.jwt.AuthEntryPoint;
+import com.groupe2.backspringboot.auth.security.jwt.JwtRequestFilter;
 
 @Configuration
 @EnableWebSecurity
@@ -25,7 +25,7 @@ import com.groupe2.backspringboot.security.jwt.JwtRequestFilter;
 public class WebSecurityConfig {
 
 	@Autowired
-	private JwtAuthenticationEntryPoint jwtAuthenticationEntryPoint;
+	private AuthEntryPoint authEntryPoint;
 
 	@Autowired
 	private JwtRequestFilter jwtRequestFilter;
@@ -43,11 +43,13 @@ public class WebSecurityConfig {
 
 	@Bean
 	public SecurityFilterChain filterChain(HttpSecurity httpSecurity) throws Exception {
-		httpSecurity.csrf().disable().authorizeRequests().antMatchers("/authenticate", "/register").permitAll()
-				.anyRequest().authenticated().and().exceptionHandling()
-				.authenticationEntryPoint(jwtAuthenticationEntryPoint).and().sessionManagement()
-				.sessionCreationPolicy(SessionCreationPolicy.STATELESS);
-
+		httpSecurity.csrf().disable()
+		.exceptionHandling().authenticationEntryPoint(authEntryPoint).and()
+		.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
+		.authorizeRequests().antMatchers("/api/auth/**").permitAll()
+		.antMatchers("/api/test/**").permitAll()
+		.anyRequest().authenticated();
+		
 		httpSecurity.addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);
 
 		return httpSecurity.build();

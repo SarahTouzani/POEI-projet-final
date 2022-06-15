@@ -20,8 +20,6 @@ import org.springframework.web.filter.OncePerRequestFilter;
 
 import com.groupe2.backspringboot.auth.security.services.UserDetailsServiceImpl;
 
-import io.jsonwebtoken.ExpiredJwtException;
-
 @Component
 public class JwtRequestFilter extends OncePerRequestFilter {
 

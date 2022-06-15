@@ -110,9 +110,10 @@ public class AuthenticationController {
 		}
 		
 		user.setRoles(roles);
-		userRepository.save(user);
+		//userRepository.save(user);
 		
-		return ResponseEntity.ok(new MessageResponse("User registered succefully"));
+		//return ResponseEntity.ok(new MessageResponse("User registered succefully"));
+		return ResponseEntity.ok(userRepository.save(user));
 	}
 
 }

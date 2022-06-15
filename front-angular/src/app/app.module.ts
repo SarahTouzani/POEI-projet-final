@@ -8,6 +8,7 @@ import { AppHeaderComponent } from './app-header/app-header.component';
 import { AppFooterComponent } from './app-footer/app-footer.component';
 import { AppimgComponent } from './appimg/appimg.component';
 import { AppcarouselComponent } from './appcarousel/appcarousel.component';
+import { AppcontactComponent } from './appcontact/appcontact.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { AppcarouselComponent } from './appcarousel/appcarousel.component';
     AppHeaderComponent,
     AppFooterComponent,
     AppimgComponent,
-    AppcarouselComponent
+    AppcarouselComponent,
+    AppcontactComponent
   ],
   imports: [
     BrowserModule,

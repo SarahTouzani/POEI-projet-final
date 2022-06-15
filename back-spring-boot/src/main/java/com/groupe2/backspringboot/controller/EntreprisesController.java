@@ -13,34 +13,35 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.groupe2.backspringboot.model.Prestations;
-import com.groupe2.backspringboot.repository.PrestationRepository;
+import com.groupe2.backspringboot.model.Entreprises;
+import com.groupe2.backspringboot.repository.EntreprisesRepository;
 
 @RestController
-@RequestMapping("/prestations")
-public class PrestationsController {
+@RequestMapping("/entreprises")
+public class EntreprisesController {
 	
 	@Autowired
-	private PrestationRepository repo;
+	private EntreprisesRepository repo;
 	
 	@CrossOrigin
 	@GetMapping
-	public List<Prestations> testfindall(){
+	public List<Entreprises> testfindall(){
 		return repo.findAll();
 	}
 	
 	@CrossOrigin
 	@GetMapping("{id}")
-	public Prestations findbyid(@PathVariable(name = "id") int id) {
+	public Entreprises findbyid(@PathVariable(name = "id") int id) {
 		return repo.findById(id).get();
 	}
 	
 	@CrossOrigin
 	@PostMapping
-	public void create(@RequestBody Prestations p) {
-		repo.save(p);
-		//return "ok";
+	public void create(@RequestBody Entreprises e) {
+		repo.save(e);
+		
 	}
+	
 	
 	@CrossOrigin
 	@DeleteMapping("{id}")
@@ -50,20 +51,8 @@ public class PrestationsController {
 	
 	@CrossOrigin
 	@PutMapping
-	public void update(@RequestBody Prestations p) {
-		repo.save(p);
-	}
-	
-	@CrossOrigin
-	@GetMapping("{profession}")
-	public List<Prestations> findbyProfession(@PathVariable(name = "profession") String profession) {
-		return repo.findByProfession(profession);
-	}
-	
-	@CrossOrigin
-	@GetMapping("{tarif}")
-	public List<Prestations> findAllByOrderByTarifAsc(@PathVariable(name = "tarif") String tarif) {
-		return repo.findAllByOrderByTarifAsc();
+	public void update(@RequestBody Entreprises e) {
+		repo.save(e);
 	}
 
 }

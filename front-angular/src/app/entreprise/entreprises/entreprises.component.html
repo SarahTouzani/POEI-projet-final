@@ -1,0 +1,44 @@
+<div class="container col-8">
+    <button (click)="afficherAll()" class="btn btn-dark">Tout afficher</button><br><br>
+    <div class="row">
+        
+        <div class="col">   
+    <select name="marqueSelection" id="marqueSelection" [(ngModel)]="selectedProf" class="form-select">
+        <option *ngFor="let profession of listProfession" [ngValue]="profession">{{profession}}</option>
+    </select>
+    <button (click)="afficherProf()" class="btn btn-dark">Afficher par profession</button><br><br>
+</div>
+<div class="col">
+    <select name="marqueSelection" id="marqueSelection" [(ngModel)]="selectedDept" class="form-select">
+        <option *ngFor="let dept of listDpt" [ngValue]="dept">{{dept}}</option>
+    </select>
+    <button (click)="afficherDept()" class="btn btn-dark">Afficher par Departement</button><br><br>
+</div>
+</div>
+    <button (click)="afficherProfDept()" class="btn btn-dark">Afficher par Profession et Departement</button><br><br>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Entreprise</th>
+                <th>Profession</th>
+                <th>Departement</th>
+                <th>Adresse</th>
+                <th>E-mail</th>
+                <th>Téléphone</th>
+                <th>Sélection</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let c of listEntreprise">
+                <td> {{c.entreprise}}</td>
+                <td> {{c.profession}}</td>
+                <td> {{c.departement}}</td>
+                <td> {{c.adresse}}</td>
+                <td> {{c.mail}}</td>
+                <td> {{c.telephone}}</td>
+                <td> <button (click)="select(c)" class="btn btn-dark">Choisir cette entreprise</button></td>
+            </tr>
+        </tbody>
+    </table>
+</div>

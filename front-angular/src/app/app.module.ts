@@ -11,8 +11,8 @@ import { AppcarouselComponent } from './appcarousel/appcarousel.component';
 import { AppcontactComponent } from './appcontact/appcontact.component';
 import { EntreprisesComponent } from './entreprise/entreprises/entreprises.component';
 import { PrestationsComponent } from './prestation/prestations/prestations.component';
-import { LoginComponent } from './app-authorization/login/login.component';
 import { SignupComponent } from './app-authorization/signup/signup.component';
+import { LoginComponent } from './app-authorization/login/login.component';
 
 @NgModule({
   declarations: [

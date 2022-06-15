@@ -1,8 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { LoginComponent } from './app-authorization/login/login.component';
+import { SigninComponent } from './app-authorization/signin/signin.component';
 import { AppFooterComponent } from './app-footer/app-footer.component';
 import { AppHeaderComponent } from './app-header/app-header.component';
-import { AppLoginComponent } from './app-authorization/app-login/app-login.component';
 import { AppcarouselComponent } from './appcarousel/appcarousel.component';
 import { AppcontactComponent } from './appcontact/appcontact.component';
 import { AppimgComponent } from './appimg/appimg.component';
@@ -17,7 +18,8 @@ const routes: Routes = [
   { path: 'appcontact', component: AppcontactComponent },
   { path: 'entreprises', component: EntreprisesComponent },
   { path: 'prestations', component: PrestationsComponent },
-  { path: 'login', component: AppLoginComponent },
+  { path: 'login', component: LoginComponent},
+  { path: 'signin', component: SigninComponent},
 ];
 
 @NgModule({

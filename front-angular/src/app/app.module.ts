@@ -11,7 +11,7 @@ import { AppcarouselComponent } from './appcarousel/appcarousel.component';
 import { AppcontactComponent } from './appcontact/appcontact.component';
 import { EntreprisesComponent } from './entreprise/entreprises/entreprises.component';
 import { PrestationsComponent } from './prestation/prestations/prestations.component';
-import { AppLoginComponent } from './app-authorization/app-login/app-login.component';
+import { LoginComponent } from './app-authorization/login/login.component';
 import { SigninComponent } from './app-authorization/signin/signin.component';
 
 @NgModule({
@@ -23,9 +23,9 @@ import { SigninComponent } from './app-authorization/signin/signin.component';
     AppcarouselComponent,
     AppcontactComponent,
     EntreprisesComponent,
-    PrestationsComponent
+    PrestationsComponent,
     AppcarouselComponent,
-    AppLoginComponent,
+    LoginComponent,
     SigninComponent,
   ],
   imports: [

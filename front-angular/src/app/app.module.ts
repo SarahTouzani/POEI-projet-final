@@ -12,7 +12,7 @@ import { AppcontactComponent } from './appcontact/appcontact.component';
 import { EntreprisesComponent } from './entreprise/entreprises/entreprises.component';
 import { PrestationsComponent } from './prestation/prestations/prestations.component';
 import { LoginComponent } from './app-authorization/login/login.component';
-import { SigninComponent } from './app-authorization/signin/signin.component';
+import { SignupComponent } from './app-authorization/signup/signup.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +26,7 @@ import { SigninComponent } from './app-authorization/signin/signin.component';
     PrestationsComponent,
     AppcarouselComponent,
     LoginComponent,
-    SigninComponent,
+    SignupComponent,
   ],
   imports: [
     BrowserModule,

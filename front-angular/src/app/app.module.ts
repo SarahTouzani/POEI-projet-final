@@ -32,6 +32,7 @@ import { SignupComponent } from './app-authorization/signup/signup.component';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpClientModule
   ],
   providers: [],

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthenticationService } from '../shared/authentication.service';
 import { UserLogin } from '../shared/user-login';
 
@@ -9,22 +10,32 @@ import { UserLogin } from '../shared/user-login';
 })
 export class LoginComponent implements OnInit {
 
-  user: UserLogin;
-  message: any;
+  loginForm: FormGroup;
   error: any;
 
-  constructor(private srv: AuthenticationService) {
-    this.user = new UserLogin("", "");
+  constructor(private srv: AuthenticationService, private formBuilder: FormBuilder) {
+    this.loginForm = formBuilder.group({});
    }
 
   ngOnInit(): void {
+    this.initLoginForm();
   }
 
-  verifyLogin() {
+  initLoginForm() {
+    this.loginForm = this.formBuilder.group({
+      username: ["", [Validators.required, Validators.minLength(4)]],
+      password: ["", [Validators.required, Validators.minLength(8)]],
+    })
+  }
+
+  get f() { return this.loginForm.controls; }
+
+  onSubmit() {
+    let user = new UserLogin(this.f['username'].value, this.f['password'].value)
     this.error = "";
-    this.srv.generateToken(this.user).subscribe({
-      next: (response) => { sessionStorage.setItem("loginToken", JSON.stringify(response)) },
-      error: (err) => { console.log(err); this.error = err }
+    this.srv.login(user).subscribe({
+      next: (response) => { sessionStorage.setItem("currentUser", JSON.stringify(response)), console.log(response) },
+      error: (err) => { console.log(err); this.error = err.error }
     })
   }
 

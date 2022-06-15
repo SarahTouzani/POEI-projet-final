@@ -8,8 +8,8 @@ import com.groupe2.backspringboot.model.Prestations;
 
 public interface PrestationRepository extends JpaRepository<Prestations, Integer> {
 
-	public List<Prestations> findByProfession(String professsion);
+	public List<Prestations> findByProfession(String profession);
 
-	public List<Prestations> findAllByOrderByTarifAsc();
+	//public List<Prestations> findAllByOrderByTarifAsc();
 
 }

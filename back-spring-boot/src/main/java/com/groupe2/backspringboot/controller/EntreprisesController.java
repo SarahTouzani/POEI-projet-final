@@ -19,40 +19,59 @@ import com.groupe2.backspringboot.repository.EntreprisesRepository;
 @RestController
 @RequestMapping("/entreprises")
 public class EntreprisesController {
-	
+
 	@Autowired
 	private EntreprisesRepository repo;
-	
+
 	@CrossOrigin
 	@GetMapping
-	public List<Entreprises> testfindall(){
+	public List<Entreprises> testfindall() {
 		return repo.findAll();
 	}
-	
+
 	@CrossOrigin
 	@GetMapping("{id}")
 	public Entreprises findbyid(@PathVariable(name = "id") int id) {
 		return repo.findById(id).get();
 	}
-	
+
 	@CrossOrigin
 	@PostMapping
 	public void create(@RequestBody Entreprises e) {
 		repo.save(e);
-		
+
 	}
-	
-	
+
 	@CrossOrigin
 	@DeleteMapping("{id}")
 	public void delete(@PathVariable(name = "id") int id) {
 		repo.delete(repo.findById(id).get());
 	}
-	
+
 	@CrossOrigin
 	@PutMapping
 	public void update(@RequestBody Entreprises e) {
 		repo.save(e);
+	}
+
+	@CrossOrigin
+	@GetMapping("/dep/{dep}")
+	public List<Entreprises> findbydpt(@PathVariable(name = "dep") String dep) {
+
+		return repo.findByDepartement(dep);
+	}
+
+	@CrossOrigin
+	@GetMapping("/prof/{prof}")
+	public List<Entreprises> findbyprof(@PathVariable(name = "prof") String prof) {
+		return repo.findByProfession(prof);
+	}
+
+	@CrossOrigin
+	@GetMapping("/profdep/{prof}/{dep}")
+	public List<Entreprises> findbyprofanddep(@PathVariable(name = "prof") String prof,
+			@PathVariable(name = "dep") String dep) {
+		return repo.findByProfessionAndDepartement(prof, dep);
 	}
 
 }

@@ -9,6 +9,8 @@ import { AppFooterComponent } from './app-footer/app-footer.component';
 import { AppimgComponent } from './appimg/appimg.component';
 import { AppcarouselComponent } from './appcarousel/appcarousel.component';
 import { AppcontactComponent } from './appcontact/appcontact.component';
+import { EntreprisesComponent } from './entreprise/entreprises/entreprises.component';
+import { PrestationsComponent } from './prestation/prestations/prestations.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +20,8 @@ import { AppcontactComponent } from './appcontact/appcontact.component';
     AppimgComponent,
     AppcarouselComponent,
     AppcontactComponent
+    EntreprisesComponent,
+    PrestationsComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,55 @@
+<div class="container col-8">
+
+    <button (click)="afficherAll()" class="btn btn-dark">Tout afficher</button><br><br>
+
+    <div class="container col-8 display-6 text-center">{{nomentreprise}} vous alloue ses services de {{profession}}</div><br>
+
+    <section>
+        <p *ngIf="client == null || client == '' " class="text-danger">
+            Veuillez entrer votre nom pour commencer vos achats :)
+        </p>
+        <div>
+            <label for="client">SAISIR VOTRE NOM:</label>
+            <input type="text" name="client" [(ngModel)]="client" [disabled]="isAchatCommence" class="form-control">
+        </div>
+    </section>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Prestation</th>
+                <th>Tarif</th>
+                <th>Quantité</th>
+                <th></th>            
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let c of listPrestations">
+                <td> {{c.prestation}}</td>
+                <td> {{c.tarif}}</td>
+                <td> <input type="number" class="form-control" id="quantite" placeholder="0" name="quantite" [(ngModel)]="c.quantite"></td>
+                <td> <button (click)="select(c)" class="btn btn-dark">Ajouter cette prestation</button></td>                
+            </tr>
+        </tbody>
+    </table>
+
+    <section *ngIf="panier.listLignePresta.length > 0" class="mt-4">
+        <p class="h5">{{client}} voici votre panier</p>
+        <ul class="list-group">
+            <li *ngFor="let p of panier.listLignePresta" class="list-group-item">
+                {{p.quantite}} x {{p.prestation.prestation}} à {{p.prestation.tarif}} pour un total de {{p.totalLigne}} euros.
+            </li>
+        </ul>
+        <div class="row mt-4">
+            <div class="col input-group">
+                <span class="input-group-text">Total du panier</span>
+                <input type="text" class="form-control bg-transparent" placeholder="{{panier.totalPanier}}€" disabled>
+            </div>
+            <div class="col">
+                <button (click)="valideCommande()" class="btn btn-success">Valider la commande</button>
+            </div>
+        </div>
+
+    </section>
+
+</div>

@@ -19,7 +19,7 @@ import { PrestationsComponent } from './prestation/prestations/prestations.compo
     AppFooterComponent,
     AppimgComponent,
     AppcarouselComponent,
-    AppcontactComponent
+    AppcontactComponent,
     EntreprisesComponent,
     PrestationsComponent
   ],

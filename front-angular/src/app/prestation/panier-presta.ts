@@ -14,8 +14,12 @@ export class PanierPresta {
     }
 
     addLigne(ligne : LignePresta){
-        this.listLignePresta.push(ligne);
-        this.totalPanier += ligne.totalLigne
+        if (this.listLignePresta) {
+            this.listLignePresta.push(ligne);
+            this.totalPanier += ligne.totalLigne 
+            return;
+        }
+        this.updatePanier(ligne);  
     }
 
     updatePanier(ligne : LignePresta){
@@ -26,6 +30,13 @@ export class PanierPresta {
             }
             return Prestation;
         });
+    }
+
+    removeArticle(ligne: LignePresta) {
+        let index = this.listLignePresta.findIndex((o) => o.prestation === ligne.prestation);
+
+        this.listLignePresta.splice(index, 1);
+        this.totalPanier -= ligne.prestation.tarif;
     }
 
 }

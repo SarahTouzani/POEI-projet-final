@@ -16,25 +16,32 @@ export class PrestationsComponent implements OnInit {
   nomentreprise : string = "";
   adresseentreprise : string = "";
   listPrestations : Array<Prestation> = new Array<Prestation>();
-  message : string ="";
 
-  prestations : Array<Prestation> = new Array<Prestation>();
-  selectedPresta : Prestation = new Prestation(0, "", "", 0, 0,0);
+  listeLignePrestations : Array<LignePresta> = new Array<LignePresta>();
   client : string = "";
-  ligne : LignePresta = new LignePresta(0, this.selectedPresta,0);
   panier : PanierPresta = new PanierPresta();
-  isAchatCommence : boolean = false;
 
-  constructor(private srv : SrvprestationService) { }
+  constructor(private srv : SrvprestationService) { 
+  }
 
   ngOnInit(): void {
-    let entreprise : Entreprises =  JSON.parse(sessionStorage.getItem("entreprise") || '') ;
+  
+  let entreprise : Entreprises =  JSON.parse(sessionStorage.getItem("entreprise") || '') ;
   this.profession = entreprise.profession; 
   this.nomentreprise = entreprise.entreprise; 
-  this.adresseentreprise = entreprise.adresse; 
-    this.afficherByProf();
-    
-   
+  this.adresseentreprise = entreprise.adresse;
+  this.afficherByProf(); 
+  if (sessionStorage.getItem("panier")) {
+
+    let oldPanier = JSON.parse(sessionStorage.getItem("panier") || '{}');
+
+    this.panier = new PanierPresta();
+    this.panier.client = oldPanier.client;
+    this.panier.listLignePresta = oldPanier.listLignePresta;
+    this.panier.totalPanier = oldPanier.totalPanier;
+
+  }
+
   }
 
   init(){
@@ -53,34 +60,40 @@ export class PrestationsComponent implements OnInit {
     this.srv.findByProfession(this.profession).subscribe({
       next:(data) => {this.listPrestations = data},
       error:(err) => {console.log(err)},
-      complete:() => {console.log(this.listPrestations)}
+      complete:() => { console.log(this.listeLignePrestations); this.listPrestations.forEach((v) => this.listeLignePrestations.push(new LignePresta(0, v)))}
     })
   }
 
-  select(c : Prestation){
-    this.selectedPresta = c;
-    this.isAchatCommence = true;
-    this.ligne.quantite = c.quantite;    
-    this.ligne.prestation = this.selectedPresta;
-    
-    let PrestaDejaDansListe = this.panier.listLignePresta.find(p => p.prestation === this.ligne.prestation);
-    let quantite = c.quantite; 
-    
+  select(c : LignePresta){
+
+  
+
+    let li = new LignePresta(c.quantite, c.prestation);
+
+
+    let PrestaDejaDansListe = this.panier.listLignePresta.find(p => p.prestation === li.prestation);
+    let quantite = c.quantite;
+    c.quantite = 0;
 
     if(PrestaDejaDansListe){
       PrestaDejaDansListe.updateLigne(quantite);
       this.panier.updatePanier(PrestaDejaDansListe);
-      console.log(this.ligne.totalLigne);
+      sessionStorage.setItem("panier", JSON.stringify(this.panier));
       return;
     }
 
     this.panier.client = this.client;
-    this.panier.addLigne(this.ligne);
-    console.log(this.ligne.totalLigne)
+    this.panier.addLigne(li);
+    // this.panier.listLignePresta.push(li);
+    sessionStorage.setItem("panier", JSON.stringify(this.panier));
   }
 
   valideCommande(){
     alert(`${this.client} merci de votre commande de ${this.panier.totalPanier}€`)
+  }
+
+  remove(p: LignePresta) {
+    this.panier.removeArticle(p);
   }
 
 }

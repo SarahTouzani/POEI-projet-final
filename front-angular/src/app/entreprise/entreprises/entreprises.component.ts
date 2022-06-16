@@ -28,7 +28,7 @@ export class EntreprisesComponent implements OnInit {
 
   ngOnInit(): void {
     if(sessionStorage.getItem("currentUser")==null){
-      this.router.navigate(['/appcarousel']);
+      this.router.navigate(['/index']);
     }
     
   }

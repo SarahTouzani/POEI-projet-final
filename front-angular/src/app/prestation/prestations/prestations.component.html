@@ -32,7 +32,7 @@
                 <td> {{c.prestation.prestation}}</td>
                 <td> {{c.prestation.tarif}}</td>
                 <td> <input type="number" class="form-control" id="quantite" placeholder="0" name="quantite"
-                        [(ngModel)]="c.quantite"></td>
+                        [(ngModel)]="c.quantite" min="0"></td>
                 <td> <button (click)="select(c)" class="btn btn-dark">Ajouter cette prestation</button></td>
             </tr>
         </tbody>

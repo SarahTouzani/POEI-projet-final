@@ -1,46 +1,46 @@
-<div class="container w-50 mt-5 mb-5 p-5 border border-primary rounded-3">
+<div class="container w-50 mt-5 mb-5 p-5 border border-warning rounded-3">
 
     <form [formGroup]="signupForm" class="mx-auto" (ngSubmit)="onSubmit()">
         <div class="input-group">
-            <span class="input-group-text w-25">username</span>
+            <span class="input-group-text w-25">Username</span>
             <input type="text" class="form-control" placeholder="Entrez votre identifiant..." formControlName="username">
         </div>
         <div class="input-group mt-3">
-            <span class="input-group-text w-25">mot de passe</span>
+            <span class="input-group-text w-25">Mot de passe</span>
             <input type="password" class="form-control" placeholder="Entrez votre mot de passe..."
             formControlName="password">
         </div>
         <div class="input-group mt-3">
-            <span class="input-group-text w-25">email</span>
+            <span class="input-group-text w-25">Email</span>
             <input type="text" class="form-control" placeholder="Entrez votre email..." formControlName="email">
         </div>
         <div class="input-group mt-3">
-            <span class="input-group-text w-25">nom</span>
+            <span class="input-group-text w-25">Nom</span>
             <input type="text" class="form-control" placeholder="Entrez votre nom..." formControlName="lastname">
         </div>
         <div class="input-group mt-3">
-            <span class="input-group-text w-25">prénom</span>
+            <span class="input-group-text w-25">Prénom</span>
             <input type="text" class="form-control" placeholder="Entrez votre email..." formControlName="firstname">
         </div>
         <div class="input-group mt-3">
-            <span class="input-group-text w-25">adresse</span>
+            <span class="input-group-text w-25">Adresse</span>
             <input type="text" class="form-control" placeholder="Entrez votre adresse... ex: 2 rue de la paix" formControlName="address">
         </div>
         <div class="input-group mt-3">
-            <span class="input-group-text w-25">code postal</span>
+            <span class="input-group-text w-25">Code postal</span>
             <input type="text" class="form-control" placeholder="Entrez votre code postal..." formControlName="zipcode">
         </div>
         <div class="input-group mt-3">
-            <span class="input-group-text w-25">ville</span>
+            <span class="input-group-text w-25">Ville</span>
             <input type="text" class="form-control" placeholder="Entrez votre ville..." formControlName="city">
         </div>
         <div class="input-group mt-3">
-            <span class="input-group-text w-25">téléphone</span>
+            <span class="input-group-text w-25">Téléphone</span>
             <input type="text" class="form-control" placeholder="Entrez votre numéro de téléphone..." formControlName="telephone">
         </div>
 
         <div class="row mt-3">
-            <button type="submit" class="btn btn-primary" [disabled]="!signupForm.valid">register</button>
+            <button type="submit" class="btn btn-warning" [disabled]="!signupForm.valid"><strong>S'ENREGISTRER</strong></button>
         </div>
     </form>
 

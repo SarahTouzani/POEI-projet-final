@@ -32,37 +32,15 @@ export class PrestationsComponent implements OnInit {
   
   let entreprise : Entreprises =  JSON.parse(sessionStorage.getItem("entreprise") || '') ;
   let user = JSON.parse(sessionStorage.getItem("currentUser") || '')
-  this.client = user.username;
+  this.client = user.contact.lastname + " " + user.contact.firstname;
   this.profession = entreprise.profession; 
   this.nomentreprise = entreprise.entreprise; 
   this.adresseentreprise = entreprise.adresse;
-  this.afficherByProf(); 
-  if (sessionStorage.getItem("panier")) {
-
-    let oldPanier = JSON.parse(sessionStorage.getItem("panier") || '{}');
-
-    this.panier = new PanierPresta();
-    this.panier.client = oldPanier.client;
-    this.panier.listLignePresta = oldPanier.listLignePresta;
-    this.panier.totalPanier = oldPanier.totalPanier;
-
+  this.afficherByProf();
+  this.setPanier();
   }
 
-  }
-
-  init(){
-    
-  }
-
-  afficherAll(){
-    this.srv.findAll().subscribe({
-      next:(data) => {this.listPrestations = data},
-      error:(err) => {console.log(err)},
-      complete:() => {console.log(this.listPrestations)}
-    })
-  }
-
-  afficherByProf(){
+  private afficherByProf(){
     this.srv.findByProfession(this.profession).subscribe({
       next:(data) => {this.listPrestations = data},
       error:(err) => {console.log(err)},
@@ -72,26 +50,29 @@ export class PrestationsComponent implements OnInit {
 
   select(c : LignePresta){
 
+    if (c.quantite > 0) {
+
+      let li = new LignePresta(c.quantite, c.prestation);
+
+      console.log(this.panier)
   
-
-    let li = new LignePresta(c.quantite, c.prestation);
-
-
-    let PrestaDejaDansListe = this.panier.listLignePresta.find(p => p.prestation === li.prestation);
-    let quantite = c.quantite;
-    c.quantite = 0;
-
-    if(PrestaDejaDansListe){
-      PrestaDejaDansListe.updateLigne(quantite);
-      this.panier.updatePanier(PrestaDejaDansListe);
+      let PrestaDejaDansListe = this.panier.listLignePresta.find(p => p.prestation === li.prestation);
+      console.log(PrestaDejaDansListe)
+      let quantite = c.quantite;
+      c.quantite = 0;
+  
+      if(PrestaDejaDansListe){
+        PrestaDejaDansListe.updateLigne(quantite);
+        this.panier.updatePanier(PrestaDejaDansListe);
+        sessionStorage.setItem("panier", JSON.stringify(this.panier));
+        return;
+      }
+  
+      this.panier.client = this.client;
+      this.panier.addLigne(li);
       sessionStorage.setItem("panier", JSON.stringify(this.panier));
-      return;
     }
 
-    this.panier.client = this.client;
-    this.panier.addLigne(li);
-    // this.panier.listLignePresta.push(li);
-    sessionStorage.setItem("panier", JSON.stringify(this.panier));
   }
 
   valideCommande(){
@@ -106,7 +87,19 @@ export class PrestationsComponent implements OnInit {
     this.panier = new PanierPresta();
    }
    sessionStorage.setItem("panier", JSON.stringify(this.panier));
-   console.log(this.panier)
+  }
+
+  setPanier() {
+
+    if (sessionStorage.getItem("panier")) {
+
+      let oldPanier = JSON.parse(sessionStorage.getItem("panier") || '{}');
+  
+      this.panier = new PanierPresta();
+      this.panier.client = oldPanier.client;
+      this.panier.listLignePresta = oldPanier.listLignePresta;
+      this.panier.totalPanier = oldPanier.totalPanier; 
+    }
   }
 
 }

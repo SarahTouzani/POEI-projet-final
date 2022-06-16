@@ -25,24 +25,26 @@
 
     </div>
     <br>
-    <div class="row justify-content-center">
+    <div class="row mt-5">
 
-        <button (click)="afficherProfDept()" class="btn btn-warning col-5"><span
-                style="font-weight: bold; font-family :'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-size: larger; margin: 10px;  height : 50px; width: 300px;">Afficher
-                par Profession et Departement</span></button>
-        <br>
-        <div class="row justify-content-center">
-            <button (click)="afficherAll()" class="btn btn-dark"
-                style="font-weight: bold; font-family :'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-size: larger; margin: 10px; height : 45px; width: 300px;">Tout
-                afficher</button>
+        <div class="col">
+            <button (click)="afficherProfDept()" class="btn btn-warning"><span
+                    style="font-weight: bold; font-family :'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-size: larger; margin: 10px;  height : 50px; width: 300px;">Afficher
+                    par Profession et Departement</span></button>
         </div>
-        <br><br>
+        <div class="col">
+            <button (click)="afficherAll()" class="btn btn-dark"><span
+                style="font-weight: bold; font-family :'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-size: larger; margin: 10px; height : 50px; width: 300px;">Tout
+                afficher</span></button>
+        </div>
+    </div>
+    <br><br>
    
 
     <br><br>
 
-    <table class="table">
-        <thead>
+    <table class="table table-striped">
+        <thead class="table-warning">
             <tr>
                 <th>Entreprise</th>
                 <th>Profession</th>

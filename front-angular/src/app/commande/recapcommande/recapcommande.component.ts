@@ -39,6 +39,8 @@ export class RecapcommandeComponent implements OnInit {
 
     this.panier = JSON.parse(sessionStorage.getItem("panier") || '{}');
 
+    sessionStorage.removeItem("panier");
+
   }
 
 }

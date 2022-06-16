@@ -29,13 +29,24 @@ export class SignupComponent implements OnInit {
       username: ["", Validators.required],
       password: ["", Validators.required],
       email: ["", [Validators.required, Validators.email]],
+      lastname: ["", Validators.required],
+      firstname: ["", Validators.required],
+      address: ["", Validators.required],
+      zipcode: ["", Validators.required],
+      city: ["", Validators.required],
+      telephone: ["", Validators.required],
     })
   }
 
   get f() { return this.signupForm.controls; }
 
   onSubmit() {
-    let user = new UserSignup(this.f['username'].value, this.f['password'].value, this.f['email'].value)
+    let user = new UserSignup(
+      this.f['username'].value, this.f['password'].value, this.f['email'].value, 
+      this.f['lastname'].value, this.f['firstname'].value, this.f['address'].value,
+      this.f['zipcode'].value, this.f['city'].value, this.f['telephone'].value
+    )
+    console.log(JSON.stringify(user))
     this.error = "";
     this.srv.register(user).subscribe({
       next: (response) => { console.log(response) , this.router.navigate(['/login'])},

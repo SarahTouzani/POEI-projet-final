@@ -14,6 +14,30 @@
             <span class="input-group-text w-25">email</span>
             <input type="text" class="form-control" placeholder="Entrez votre email..." formControlName="email">
         </div>
+        <div class="input-group mt-3">
+            <span class="input-group-text w-25">nom</span>
+            <input type="text" class="form-control" placeholder="Entrez votre nom..." formControlName="lastname">
+        </div>
+        <div class="input-group mt-3">
+            <span class="input-group-text w-25">prénom</span>
+            <input type="text" class="form-control" placeholder="Entrez votre email..." formControlName="firstname">
+        </div>
+        <div class="input-group mt-3">
+            <span class="input-group-text w-25">adresse</span>
+            <input type="text" class="form-control" placeholder="Entrez votre adresse... ex: 2 rue de la paix" formControlName="address">
+        </div>
+        <div class="input-group mt-3">
+            <span class="input-group-text w-25">code postal</span>
+            <input type="text" class="form-control" placeholder="Entrez votre code postal..." formControlName="zipcode">
+        </div>
+        <div class="input-group mt-3">
+            <span class="input-group-text w-25">ville</span>
+            <input type="text" class="form-control" placeholder="Entrez votre ville..." formControlName="city">
+        </div>
+        <div class="input-group mt-3">
+            <span class="input-group-text w-25">téléphone</span>
+            <input type="text" class="form-control" placeholder="Entrez votre numéro de téléphone..." formControlName="telephone">
+        </div>
 
         <div class="row mt-3">
             <button type="submit" class="btn btn-primary" [disabled]="!signupForm.valid">register</button>

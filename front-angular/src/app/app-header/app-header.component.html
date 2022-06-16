@@ -9,13 +9,16 @@
             <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
                 <!--<img src="assets/icons/chart-line-solid.svg"> taille icone à retravailler-->
                 <li>
-                    <a routerLink="/appcarousel" class="nav-link px-2 text-white">Accueil</a>
+                    <a routerLink="/index" class="nav-link px-2 text-white">Accueil</a>
                 </li>
                 <li>
                     <a routerLink="/app-prestations" class="nav-link px-2 text-white"> 🛠 Nos prestations</a>
                 </li>
                 <li>
                     <a routerLink="/prestataires" class="nav-link px-2 text-white">🌈 Nos Prestataires</a>
+                </li>
+                <li>
+                    <a routerLink="/entreprises" class="nav-link px-2 text-white" *ngIf="isLogged" >🌈 Les entreprises</a>
                 </li>
                 <li>
                     <a routerLink="/appcontact" class="nav-link px-2 text-white">📩 Nous contacter</a></li>

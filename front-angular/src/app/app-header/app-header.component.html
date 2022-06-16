@@ -26,9 +26,9 @@
             </form>
 
             <div class="text-end">
-                <button type="button" class="btn btn-outline-light me-2 btn-warning" (click)="goLogin()" [hidden]="isLogged">👨‍💼 Login</button>
-                <button type="button" class="btn btn-success me-2" (click)=" goSignUp() " [hidden]="isLogged">😀 Sign-up </button>
-                <button type="button " class="btn btn-danger " (click)="logout() " [hidden]="!isLogged">👋 Logout </button>
+                <button type="button" class="btn btn-outline-light me-2 btn-warning" (click)="goLogin()" *ngIf="!isLogged" >👨‍💼 Login</button>
+                <button type="button" class="btn btn-success me-2" (click)=" goSignUp()" *ngIf="!isLogged" >😀 Sign-up </button>
+                <button type="button " class="btn btn-danger " (click)="logout() " *ngIf="isLogged" >👋 Logout </button>
 
             </div>
         </div>

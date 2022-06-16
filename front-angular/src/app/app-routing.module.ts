@@ -15,7 +15,7 @@ import { LogoutComponent } from './app-authorization/logout/logout.component';
 import { RecapcommandeComponent } from './commande/recapcommande/recapcommande.component';
 
 const routes: Routes = [
-  { path: 'appcarousel', component: AppcarouselComponent },
+  { path: 'index', component: AppcarouselComponent },
   { path: 'appheader', component: AppHeaderComponent },
   { path: 'appfooter', component: AppFooterComponent },
   { path: 'appimg', component: AppimgComponent },

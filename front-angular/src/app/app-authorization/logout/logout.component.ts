@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { HeaderService } from 'src/app/app-header/header.service';
 import { UserSignup } from '../shared/user-signup';
 
 @Component({
@@ -8,12 +10,12 @@ import { UserSignup } from '../shared/user-signup';
 })
 export class LogoutComponent implements OnInit {
 
-  currentUser: any;
-
-  constructor() { }
+  constructor(private router: Router, private headersrv: HeaderService) { }
 
   ngOnInit(): void {
-    this.currentUser = JSON.parse(sessionStorage.getItem("currentUser") || "")
+    sessionStorage.removeItem("currentUser");
+    this.headersrv.isLogged.next(false);
+    this.router.navigate(["/index"]);
   }
 
 }

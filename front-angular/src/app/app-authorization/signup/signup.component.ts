@@ -22,7 +22,6 @@ export class SignupComponent implements OnInit {
 
   ngOnInit(): void {
     this.initSignupForm();
-    this.headersrv.init();
   }
 
   initSignupForm() {

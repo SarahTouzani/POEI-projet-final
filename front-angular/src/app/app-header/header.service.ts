@@ -1,20 +1,20 @@
 import { Injectable } from '@angular/core';
-import { Router } from '@angular/router';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class HeaderService {
 
-  isLogged : boolean = false;
+  public isLogged: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
 
-  constructor(private router:Router) { }
+  constructor() { }
 
-  init(){
-    let user = JSON.parse(sessionStorage.getItem("currentUser") || '')
-    if(user){
-      this.isLogged = true;
-    }
-    sessionStorage.setItem("isLogged", JSON.stringify(this.isLogged))
-  }
+  // public setIsLogged(val: boolean) {
+  //   this.isLogged.next(val);
+  // }
+
+  // public getIsLogged() {
+  //   return this.isLogged.asObservable();
+  // }
 }

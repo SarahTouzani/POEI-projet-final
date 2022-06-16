@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
+import { HeaderService } from './header.service';
 
 @Component({
   selector: 'app-app-header',
@@ -8,14 +10,15 @@ import { Router } from '@angular/router';
 })
 export class AppHeaderComponent implements OnInit {
 
-  isLogged : boolean = false;
+  isLogged: boolean = false;
 
-  constructor(private router:Router) { }
+  constructor(private router:Router, private headerSrv: HeaderService) {
+    this.headerSrv.isLogged.subscribe( value => {this.isLogged = value});
+   }
 
   ngOnInit(): void {
-  this.isLogged = JSON.parse(sessionStorage.getItem("isLogged") || '{}')
-
   }
+
 goLogin(){
   this.router.navigate(['/login']); 
 }

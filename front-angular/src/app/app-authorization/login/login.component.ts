@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AppHeaderComponent } from 'src/app/app-header/app-header.component';
+import { HeaderService } from 'src/app/app-header/header.service';
 import { AuthenticationService } from '../shared/authentication.service';
 import { UserLogin } from '../shared/user-login';
 
@@ -15,7 +16,7 @@ export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   error: any;
 
-  constructor(private srv: AuthenticationService, private formBuilder: FormBuilder, private router: Router) {
+  constructor(private srv: AuthenticationService, private formBuilder: FormBuilder, private router: Router, private headersrv: HeaderService) {
     this.loginForm = formBuilder.group({});
   }
 
@@ -38,7 +39,9 @@ export class LoginComponent implements OnInit {
     this.error = "";
     this.srv.login(user).subscribe({
       next: (response) => {
-        sessionStorage.setItem("currentUser", JSON.stringify(response)), console.log(response),
+        sessionStorage.setItem("currentUser", JSON.stringify(response)), 
+        console.log(response),
+        this.headersrv.isLogged.next(true);
         this.router.navigate(['/entreprises'])
       },
       error: (err) => { console.log(err); this.error = err.error; }

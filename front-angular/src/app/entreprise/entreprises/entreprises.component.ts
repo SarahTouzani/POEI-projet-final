@@ -30,7 +30,7 @@ export class EntreprisesComponent implements OnInit {
     if(sessionStorage.getItem("currentUser")==null){
       this.router.navigate(['/appcarousel']);
     }
-    this.headersrv.init();
+    
   }
 
   afficherAll(){

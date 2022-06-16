@@ -11,6 +11,7 @@ import { EntreprisesComponent } from './entreprise/entreprises/entreprises.compo
 import { PrestationsComponent } from './prestation/prestations/prestations.component';
 import { LoginComponent } from './app-authorization/login/login.component';
 import { SignupComponent } from './app-authorization/signup/signup.component';
+import { LogoutComponent } from './app-authorization/logout/logout.component';
 
 const routes: Routes = [
   { path: 'appcarousel', component: AppcarouselComponent },
@@ -24,6 +25,7 @@ const routes: Routes = [
   { path: 'signup', component: SignupComponent },
   { path: 'app-prestations', component: AppPrestationsComponent },
   { path: 'prestataires', component: AppPrestatairesComponent },
+  { path: 'logout', component: LogoutComponent },
 ];
 
 @NgModule({

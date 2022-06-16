@@ -25,5 +25,18 @@ public class SignupRequest {
 	@NotBlank
 	@Size(min = 6, max = 40)
 	private String password;
+	
+	@NotBlank
+	private String lastname;
+	@NotBlank
+	private String firstname;
+	@NotBlank
+	private String address;
+	@NotBlank
+	private String zipCode;
+	@NotBlank
+	private String city;
+	@NotBlank
+	private String telephone;
 
 }

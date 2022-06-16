@@ -1,6 +1,7 @@
 import { HttpBackend } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { HeaderService } from 'src/app/app-header/header.service';
 import { Entreprises } from '../entreprises';
 import { SrvEntrepriseService } from '../srv/srv-entreprise.service';
 
@@ -23,12 +24,13 @@ export class EntreprisesComponent implements OnInit {
 
   
 
-  constructor(private srv : SrvEntrepriseService, private router : Router) { }
+  constructor(private srv : SrvEntrepriseService, private router : Router, private headersrv : HeaderService) { }
 
   ngOnInit(): void {
     if(sessionStorage.getItem("currentUser")==null){
       this.router.navigate(['/appcarousel']);
     }
+    this.headersrv.init();
   }
 
   afficherAll(){

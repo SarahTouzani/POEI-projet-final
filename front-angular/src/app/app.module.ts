@@ -16,6 +16,7 @@ import { LoginComponent } from './app-authorization/login/login.component';
 import { AppPrestationsComponent } from './app-prestations/app-prestations.component';
 import { AppPrestatairesComponent } from './app-prestataires/app-prestataires.component';
 import { LogoutComponent } from './app-authorization/logout/logout.component';
+import { RecapcommandeComponent } from './commande/recapcommande/recapcommande.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { LogoutComponent } from './app-authorization/logout/logout.component';
     PrestationsComponent,
     AppPrestationsComponent,
     AppPrestatairesComponent,
-    LogoutComponent
+    LogoutComponent,
+    RecapcommandeComponent,
   ],
   imports: [
     BrowserModule,

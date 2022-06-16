@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { AppHeaderComponent } from 'src/app/app-header/app-header.component';
+import { HeaderService } from 'src/app/app-header/header.service';
 import { AuthenticationService } from '../shared/authentication.service';
 import { UserSignup } from '../shared/user-signup';
 
@@ -13,12 +16,13 @@ export class SignupComponent implements OnInit {
   signupForm: FormGroup;
   error: any;
 
-  constructor(private srv: AuthenticationService, private formBuilder: FormBuilder) { 
+  constructor(private srv: AuthenticationService, private formBuilder: FormBuilder, private router : Router, private headersrv : HeaderService) { 
     this.signupForm = formBuilder.group({});
   }
 
   ngOnInit(): void {
     this.initSignupForm();
+    this.headersrv.init();
   }
 
   initSignupForm() {
@@ -35,7 +39,7 @@ export class SignupComponent implements OnInit {
     let user = new UserSignup(this.f['username'].value, this.f['password'].value, this.f['email'].value)
     this.error = "";
     this.srv.register(user).subscribe({
-      next: (response) => { console.log(response) },
+      next: (response) => { console.log(response) , this.router.navigate(['/login'])},
       error: (err) => { console.log(err); this.error = err.error }
     })
   }

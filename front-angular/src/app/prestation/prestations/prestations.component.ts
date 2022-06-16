@@ -95,7 +95,8 @@ export class PrestationsComponent implements OnInit {
   }
 
   valideCommande(){
-    alert(`${this.client} merci de votre commande de ${this.panier.totalPanier}€`)
+    this.router.navigate(['/recapcommande'])
+    
   }
 
   remove(p: LignePresta) {

@@ -12,6 +12,7 @@ import { PrestationsComponent } from './prestation/prestations/prestations.compo
 import { LoginComponent } from './app-authorization/login/login.component';
 import { SignupComponent } from './app-authorization/signup/signup.component';
 import { LogoutComponent } from './app-authorization/logout/logout.component';
+import { RecapcommandeComponent } from './commande/recapcommande/recapcommande.component';
 
 const routes: Routes = [
   { path: 'appcarousel', component: AppcarouselComponent },
@@ -26,6 +27,7 @@ const routes: Routes = [
   { path: 'app-prestations', component: AppPrestationsComponent },
   { path: 'prestataires', component: AppPrestatairesComponent },
   { path: 'logout', component: LogoutComponent },
+  { path: 'recapcommande', component: RecapcommandeComponent },
 ];
 
 @NgModule({

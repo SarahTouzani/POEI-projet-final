@@ -8,9 +8,12 @@ import { Router } from '@angular/router';
 })
 export class AppHeaderComponent implements OnInit {
 
+  isLogged : boolean = false;
+
   constructor(private router:Router) { }
 
   ngOnInit(): void {
+  this.isLogged = JSON.parse(sessionStorage.getItem("isLogged") || '{}')
 
   }
 goLogin(){
@@ -22,4 +25,7 @@ goSignUp(){
 logout(){
   this.router.navigate(['/logout']); 
 }
+
+
+
 }

@@ -36,7 +36,7 @@ export class SignupComponent implements OnInit {
     this.error = "";
     this.srv.register(user).subscribe({
       next: (response) => { console.log(response) },
-      error: (err) => { console.log(err); this.error = err }
+      error: (err) => { console.log(err); this.error = err.error }
     })
   }
 

@@ -35,8 +35,9 @@ export class LoginComponent implements OnInit {
     this.error = "";
     this.srv.login(user).subscribe({
       next: (response) => { sessionStorage.setItem("currentUser", JSON.stringify(response)), console.log(response) },
-      error: (err) => { console.log(err); this.error = err.error }
+      error: (err) => { console.log(err); this.error = err.error; }
     })
+    
   }
 
 }

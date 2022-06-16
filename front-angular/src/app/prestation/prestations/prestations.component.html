@@ -10,7 +10,7 @@
         </p>
         <div>
             <label for="client">SAISIR VOTRE NOM:</label>
-            <input type="text" name="client" [(ngModel)]="client" [disabled]="isAchatCommence" class="form-control">
+            <input type="text" name="client" [(ngModel)]="client" class="form-control">
         </div>
     </section>
 
@@ -24,9 +24,9 @@
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let c of listPrestations">
-                <td> {{c.prestation}}</td>
-                <td> {{c.tarif}}</td>
+            <tr *ngFor="let c of listeLignePrestations">
+                <td> {{c.prestation.prestation}}</td>
+                <td> {{c.prestation.tarif}}</td>
                 <td> <input type="number" class="form-control" id="quantite" placeholder="0" name="quantite" [(ngModel)]="c.quantite"></td>
                 <td> <button (click)="select(c)" class="btn btn-dark">Ajouter cette prestation</button></td>                
             </tr>
@@ -36,10 +36,26 @@
     <section *ngIf="panier.listLignePresta.length > 0" class="mt-4">
         <p class="h5">{{client}} voici votre panier</p>
         <ul class="list-group">
-            <li *ngFor="let p of panier.listLignePresta" class="list-group-item">
+            <li *ngFor="let p of panier.listLignePresta" class="list-group-item col">
                 {{p.quantite}} x {{p.prestation.prestation}} à {{p.prestation.tarif}} pour un total de {{p.totalLigne}} euros.
             </li>
         </ul>
+
+            <p class="h5">{{client}} voici votre panier</p>
+            <table class="table" *ngFor="let p of panier.listLignePresta">
+                <tr>
+                    <td>{{p.quantite}}</td>
+                    <td> x </td>
+                    <td>{{p.prestation.prestation}}</td>
+                    <td> à </td>
+                    <td>{{p.prestation.tarif}}</td>
+                    <td> pour un total de </td>
+                    <td>{{p.totalLigne}}</td>
+                    <td> euros.</td>
+                    <td><button class="btn btn-danger col" (click)="remove(p)">supprimer</button></td>
+                </tr>
+            </table>
+        
         <div class="row mt-4">
             <div class="col input-group">
                 <span class="input-group-text">Total du panier</span>

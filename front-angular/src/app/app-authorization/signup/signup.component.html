@@ -1,0 +1,24 @@
+<div class="container w-50 mt-5 mb-5 p-5 border border-primary rounded-3">
+
+    <form [formGroup]="signupForm" class="mx-auto" (ngSubmit)="onSubmit()">
+        <div class="input-group">
+            <span class="input-group-text w-25">username</span>
+            <input type="text" class="form-control" placeholder="Entrez votre identifiant..." formControlName="username">
+        </div>
+        <div class="input-group mt-3">
+            <span class="input-group-text w-25">mot de passe</span>
+            <input type="password" class="form-control" placeholder="Entrez votre mot de passe..."
+            formControlName="password">
+        </div>
+        <div class="input-group mt-3">
+            <span class="input-group-text w-25">email</span>
+            <input type="text" class="form-control" placeholder="Entrez votre email..." formControlName="email">
+        </div>
+
+        <div class="row mt-3">
+            <button type="submit" class="btn btn-primary" [disabled]="!signupForm.valid">login</button>
+        </div>
+  </form>
+
+
+</div>

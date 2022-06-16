@@ -5,14 +5,14 @@ export class LignePresta {
     prestation : Prestation;
     totalLigne : number;
 
-    constructor(quantite : number, prestation : Prestation, totalLigne : number){
+    constructor(quantite : number, prestation : Prestation){
         this.quantite = quantite;
         this.prestation = prestation,
-        this.totalLigne = totalLigne;
+        this.totalLigne = this.prestation.tarif * this.quantite;
     }
 
     updateLigne(quantite : number){
-        this.quantite+=quantite;
+        this.quantite += quantite;
         this.totalLigne = this.quantite * this.prestation.tarif;
     }
 

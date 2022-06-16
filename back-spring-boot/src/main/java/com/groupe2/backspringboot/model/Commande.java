@@ -1,8 +1,10 @@
 package com.groupe2.backspringboot.model;
 
 import java.io.Serializable;
+import java.util.List;
 
-import javax.persistence.Column;
+import javax.persistence.CollectionTable;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -24,8 +26,9 @@ public class Commande implements Serializable{
 	
 	private int idClient;
 	
-	@Column(columnDefinition = "JSON")
-	private String prestations;
+	@ElementCollection
+	@CollectionTable(name = "test")
+	private List<String> prestations;
 	
 	private String date;
 	

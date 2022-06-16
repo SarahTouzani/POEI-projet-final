@@ -24,6 +24,7 @@ import com.groupe2.backspringboot.auth.exception.TokenRefreshException;
 import com.groupe2.backspringboot.auth.model.ERole;
 import com.groupe2.backspringboot.auth.model.RefreshToken;
 import com.groupe2.backspringboot.auth.model.Role;
+import com.groupe2.backspringboot.auth.model.UserContactInformation;
 import com.groupe2.backspringboot.auth.model.UserDao;
 import com.groupe2.backspringboot.auth.payload.request.LoginRequest;
 import com.groupe2.backspringboot.auth.payload.request.LogoutRequest;
@@ -79,7 +80,7 @@ public class AuthenticationController {
 		RefreshToken refreshToken = refreshTokenService.createRefreshToken(userDetails.getId());
 
 		return ResponseEntity.ok(new JwtResponse(jwt, refreshToken.getToken(), userDetails.getId(),
-				userDetails.getUsername(), userDetails.getEmail(), roles));
+				userDetails.getUsername(), userDetails.getEmail(), userDetails.getContact(), roles));
 	}
 
 	@PostMapping("/signup")
@@ -123,6 +124,18 @@ public class AuthenticationController {
 		}
 
 		user.setRoles(roles);
+		
+		UserContactInformation contactInformation = new UserContactInformation();
+		contactInformation.setLastname(signupRequest.getLastname());
+		contactInformation.setFirstname(signupRequest.getFirstname());
+		contactInformation.setAddress(signupRequest.getAddress());
+		contactInformation.setZipCode(signupRequest.getZipCode());
+		contactInformation.setCity(signupRequest.getCity());
+		contactInformation.setTelephone(signupRequest.getTelephone());
+		
+		user.setContact(new UserContactInformation());
+		user.setContact(contactInformation);
+		
 		// userRepository.save(user);
 
 		// return ResponseEntity.ok(new MessageResponse("User registered succefully"));

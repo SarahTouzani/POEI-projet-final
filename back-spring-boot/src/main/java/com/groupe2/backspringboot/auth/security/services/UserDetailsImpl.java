@@ -5,11 +5,14 @@ import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
+import javax.validation.constraints.NotBlank;
+
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.groupe2.backspringboot.auth.model.UserContactInformation;
 import com.groupe2.backspringboot.auth.model.UserDao;
 
 import lombok.AllArgsConstructor;
@@ -26,6 +29,8 @@ public class UserDetailsImpl implements UserDetails {
 	private String email;
 	@JsonIgnore
 	private String password;
+	private UserContactInformation contact;
+
 	private Collection<? extends GrantedAuthority> authorities;
 
 	public static UserDetailsImpl build(UserDao user) {
@@ -34,7 +39,7 @@ public class UserDetailsImpl implements UserDetails {
 				.collect(Collectors.toList());
 		
 		return new UserDetailsImpl(user.getId(), user.getUsername(), user.getEmail(), user.getPassword(),
-				authorities);
+				user.getContact() , authorities);
 	}
 
 	@Override

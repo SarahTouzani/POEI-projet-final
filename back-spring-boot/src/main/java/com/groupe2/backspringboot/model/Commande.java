@@ -27,7 +27,7 @@ public class Commande implements Serializable{
 	private int idClient;
 	
 	@ElementCollection
-	@CollectionTable(name = "test")
+	@CollectionTable(name = "liste_prestations")
 	private List<String> prestations;
 	
 	private String date;

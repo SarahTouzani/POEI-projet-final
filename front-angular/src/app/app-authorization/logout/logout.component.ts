@@ -14,6 +14,8 @@ export class LogoutComponent implements OnInit {
 
   ngOnInit(): void {
     sessionStorage.removeItem("currentUser");
+    sessionStorage.removeItem("panier");
+    sessionStorage.removeItem("entreprise");
     this.headersrv.isLogged.next(false);
     this.router.navigate(["/index"]);
   }

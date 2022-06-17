@@ -1,0 +1,70 @@
+<div class="container col-9">
+    <br>
+    <p class="display-6 text-center"
+        style="font-weight: bold; font-family :'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; ">
+        Choisissez l'entreprise qui sera à votre service !</p><br><br>
+
+    <div class="row">
+
+        <div class="col">
+            <select name="marqueSelection" id="marqueSelection" [(ngModel)]="selectedProf" class="form-select">
+                <option *ngFor="let profession of listProfession" [ngValue]="profession">{{profession}}</option>
+            </select><br>
+            <button (click)="afficherProf()" class="btn btn-warning"><span
+                    style="font-weight: bold; font-family :'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-size: larger;">Afficher
+                    par Profession</span></button>
+        </div>
+        <div class="col">
+            <select name="marqueSelection" id="marqueSelection" [(ngModel)]="selectedDept" class="form-select">
+                <option *ngFor="let dept of listDpt" [ngValue]="dept">{{dept}}</option>
+            </select><br>
+            <button (click)="afficherDept()" class="btn btn-warning font-weight-bold"><span
+                    style="font-weight: bold; font-family :'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-size: larger;">Afficher
+                    par Departement</span> </button>
+        </div>
+
+    </div>
+    <br>
+    <div class="row mt-5">
+
+        <div class="col">
+            <button (click)="afficherProfDept()" class="btn btn-warning"><span
+                    style="font-weight: bold; font-family :'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-size: larger; margin: 10px;  height : 50px; width: 300px;">Afficher
+                    par Profession et Departement</span></button>
+        </div>
+        <div class="col">
+            <button (click)="afficherAll()" class="btn btn-dark"><span
+                style="font-weight: bold; font-family :'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-size: larger; margin: 10px; height : 50px; width: 300px;">Tout
+                afficher</span></button>
+        </div>
+    </div>
+    <br><br>
+   
+
+    <br><br>
+
+    <table class="table table-striped">
+        <thead class="table-warning">
+            <tr>
+                <th>Entreprise</th>
+                <th>Profession</th>
+                <th>Departement</th>
+                <th>Adresse</th>
+                <th>E-mail</th>
+                <th>Téléphone</th>
+                <th>Sélection</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let c of listEntreprise">
+                <td> {{c.entreprise}}</td>
+                <td> {{c.profession}}</td>
+                <td> {{c.departement}}</td>
+                <td> {{c.adresse}}</td>
+                <td> {{c.mail}}</td>
+                <td> {{c.telephone}}</td>
+                <td> <button (click)="select(c)" class="btn btn-dark">Choisir cette entreprise</button></td>
+            </tr>
+        </tbody>
+    </table>
+</div>

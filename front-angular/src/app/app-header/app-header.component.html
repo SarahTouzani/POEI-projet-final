@@ -1,0 +1,42 @@
+<!-- Navigation-->
+
+<header class="p-3 bg-dark text-white">
+    <div class="container">
+        <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+            <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
+                <a class="navbar-brand" href="#page-top"><img src="assets/images/img1.jpg" alt="logo" class="d-block w-75 rounded-circle" /></a>
+            </a>
+            <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+                <!--<img src="assets/icons/chart-line-solid.svg"> taille icone à retravailler-->
+                <li>
+                    <a routerLink="/index" class="nav-link px-2 text-white">Accueil</a>
+                </li>
+                <li>
+                    <a routerLink="/app-prestations" class="nav-link px-2 text-white"> 🛠 Nos Prestations</a>
+                </li>
+                <li>
+                    <a routerLink="/prestataires" class="nav-link px-2 text-white">🌈 Nos Prestataires</a>
+                </li>
+                <li>
+                    <a routerLink="/entreprises" class="nav-link px-2 text-white" *ngIf="isLogged" >🌈 Les Entreprises</a>
+                </li>
+                <li>
+                    <a routerLink="/prestations" class="nav-link px-2 text-white" *ngIf="isLogged" >🛠 Panier</a>
+                </li>
+                <li>
+                    <a routerLink="/appcontact" class="nav-link px-2 text-white">📩 Nous contacter</a></li>
+            </ul>
+
+            <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
+                <input type="search" class="form-control form-control-dark" placeholder="🔎 Rechercher..." aria-label="Search" />
+            </form>
+
+            <div class="text-end">
+                <button type="button" class="btn btn-outline-light me-2 btn-warning" (click)="goLogin()" *ngIf="!isLogged" >👨‍💼 Login</button>
+                <button type="button" class="btn btn-success me-2" (click)=" goSignUp()" *ngIf="!isLogged" >😀 Sign-up </button>
+                <button type="button " class="btn btn-danger " (click)="logout() " *ngIf="isLogged" >👋 Logout </button>
+
+            </div>
+        </div>
+    </div>
+</header>

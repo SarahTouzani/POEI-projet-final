@@ -2,9 +2,16 @@ import { LignePresta } from "../prestation/ligne-presta";
 
 export class Commande {
 
+    date : string;
+    idClient : number;
+    prestations : Array<string>;
+    total : number;
  
-    constructor(date : number, id_client : number, prestations : Array<LignePresta>,total : number){
-        
+    constructor(){
+        this.date = "";
+        this.idClient = 0;
+        this.prestations = new Array<string>;
+        this.total = 0;
     }
 
 }
